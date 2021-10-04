@@ -10,61 +10,66 @@
     <?php include_once 'navbar.php' ?>
     <!-- Sidebar included -->
     <?php include_once 'sidebar.php' ?>
-    <main>
+    
         <?php echo $user_id;?>
+        <main>
+            <style>
+                .index_section .row .col-md-4{
+                    margin-right: 10px;background: var(--sidebarcolor);
+                }
+                .index_section .row .col-md-4 a h3{
+                    float: right;font-size: 20px;padding-top: 30px;text-decoration: none;color: white;
+                }
+                .index_section .row .col-md-4 .row {
+                    padding: 10px;display: flex;justify-content: center;align-items: center;
+                }
+                .index_section .row .col-md-4 .row .col-md-3 span{
+                    color: var(--primarycolor);font-weight: bold;
+
+                }
+            </style>
+            <?php 
+$select = "SELECT count(student_id) as number_student FROM student_data";
+$runn = mysqli_query($conn, $select);
+$All_student = mysqli_fetch_array($runn);
+$select = "SELECT count(student_id) as number_boys FROM student_data WHERE std_gen=1";
+$runn = mysqli_query($conn, $select);
+$All_Boys = mysqli_fetch_array($runn);
+$select = "SELECT count(student_id) as number_girls FROM student_data WHERE std_gen=2";
+$runn = mysqli_query($conn, $select);
+$all_girls = mysqli_fetch_array($runn);
+    
+            ?>
+            <div class="container index_section">
+                <div class="row">
+                    <div class="col-md-4  text-white" style="border-radius: 10px;height: 200px;">
+                        <h1>Students</h1>
+                        <div class="row">
+                            <div class="col-md-3"><h4>Total</h4> <span><?php echo $All_student['number_student']?></span></div>
+                            <div class="col-md-3">
+                                <h4>Girls</h4> <span><?php echo $all_girls['number_girls']?></span>
+                                
+                            </div>
+                            <?php 
+
+
+                            ?>
+                            <div class="col-md-3">
+                                <h4>Boys</h4> <span><?php echo $All_Boys['number_boys']?></span>
+                                
+                            </div>
+                        </div>
+                        <a href=""><h3>More Detail</h3></a>
+                        
+                    </div>
+                    <div class="col-md-4 bg-primary text-white" style="border-radius: 10px;height: 200px;">
+                        <h1>Teachers</h1>
+                    </div>
+                </div>
+            </div>
+        </main>
  
  
-       <?php 
-if (isset($_REQUEST['submit'])) {
-   $main_input = $_REQUEST['main_input'];
-   
-  
-  $insert = "INSERT INTO `ajax`(`password`) VALUES ('$main_input')";
-  $sql = mysqli_query($conn,$insert);
-  if ($sql) {
-      echo "OK";
-  }else{
-    echo "Not OK";
-  }
-}else{
-
- 
-}
-
-        ?>
-       
-<form method="POST">
- <input type="text" id="input1"  /><br/>
-<input type="text" id="input2" /><br/>
-
-<input type="text" id="myInput" name="main_input"/>
-<input type="submit" value="submit">
-</form>
-<script>
-    $('document').ready(function() {
-    $('#input1,#input2').each(function()   {$(this).on('change',recalculate);}
-       );
-});
-function recalculate()
-{
-    if(isNaN(this.value))
-       alert("Please enter a number");
-    else
-    {
-        var a = 40;
-        var value1 = $('#input1').val().trim() == "" ? 0 :  parseInt($('#input1').val());
-        var value2 = $('#input2').val().trim() == "" ? 0 :  parseInt($('#input2').val());
-        
-        var total =  value1 * value2 
-        $('#myInput').val(total);
-    }
-}
-</script>
-
-
-
-        
-    </main>
     
     <!-- JS File included -->
     <?php include_once 'jslink.php' ?>

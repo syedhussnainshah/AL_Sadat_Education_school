@@ -31,13 +31,12 @@ for ($i=0; $i<$count ; $i++) {
    $qty = $_REQUEST['qty'][$i];
    $main_input = $_REQUEST['main_input'][$i];
 
-
    $insert = "INSERT INTO `sale`(`product_id`, `std_id`, `product_condition`, `qty`, `price`, `total`) VALUES ('$add_product', '$id', '$product_condition', '$price', '$qty', '$main_input')";
    $runn = mysqli_query($conn, $insert);
    if ($runn) {
-       echo "OK";
+      echo '<center> <div class="msg" style="background: lightgreen;color: green;padding: 10px;font-size: 20px;font-weight: bold;border-radius: 5px;">YouR Product Sbmited</div></center>';
    }else{
-    echo "Not OK";
+    echo '<center> <div class="msg" style="background: lightred;color: red;padding: 10px;font-size: 20px;font-weight: bold;border-radius: 5px;">erorr <i class="fas fa-exclamation"></i></div></center>';
    }
 }
    
@@ -47,15 +46,13 @@ for ($i=0; $i<$count ; $i++) {
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
-                        
 <div class="input_fields_wrap container">
-    <button type="button" class="add_field_button btn btn-primary">Add Field</button>
-<button type="button" class="remove_field_button btn btn-danger">Remove Field</button>
     <form action="" method="POST">
     <div class="row">
-                                <div class="col-md-2">
+    <div class="col-md-2">
         <label class="form-label">Class</label>
-        <select class="form-select" name="product_add">
+        <select class="form-select" name="product_add" required>
+            <option> PLease Select</option>
     <?php $select = "SELECT * FROM product";
     $runn = mysqli_query($conn, $select);
     while ($product_data = mysqli_fetch_array($runn)) { ?>
@@ -77,43 +74,39 @@ for ($i=0; $i<$count ; $i++) {
     </div>
     <div class="col-md-2">
         <label class="form-label">Quantity</label>
-        <input type="text" id="input2" name="qty[]" class="form-control" />
+        <input type="text" id="input2" name="qty[]" class="form-control" required />
     </div>
     <div class="col-md-2">
         <label class="form-label">Total</label>
         <input type="text" id="myInput" name="main_input[]" class="form-control" />
     </div>
-    
-                            </div>
-                            <br>
-                            
-                            
 
-</div>
-<?php 
+     <?php 
     $select = "SELECT * FROM student_data WHERE student_id=$id";
     $runn = mysqli_query($conn, $select);
     $general_data = mysqli_fetch_array($runn);
     // echo $general_data['std_name'];
         ?>
-<div class="row">
+    <div class="col-md-2">
+        <label class="form-label">Detail Products</label><br>
+        <div class="col-md-3 btn btn-danger" ><a href="show_product_detail.php?id=<?php echo $general_data['student_id'];?>" style="color: white; text-decoration: none"><i class="fas fa-arrow-right"></i></a></div>
+    </div>
+                            </div>
+                            <br>
+                            <div class="row">
                                 <div class="col-md-6">
                                     <input type="submit" name="submit" value="submit" class="btn btn-primary">
                                 </div>
                                 <div class="col-md-6">
-                                    <div class="col-md-3 btn btn-danger"><a href="show_product_detail.php?id=<?php echo $general_data['student_id'];?>">Product Detail</a></div>
                                 </div>
+                            </div>                          
+
+</div>
+                            </form>                          
                             </div>
-                            </form>
-                         
-                                
-                            </div>
-                        
                     </div>
-                    
                 </div>
             </div>
-
         </main>
         
 
@@ -139,31 +132,6 @@ function recalculate()
 </script>
 
 
-<script>
-    var max_fields      = 100;
-var wrapper         = $(".input_fields_wrap"); 
-var add_button      = $(".add_field_button");
-var remove_button   = $(".remove_field_button");
-var i=1;
-$(add_button).click(function(e){
-    e.preventDefault();
-    var total_fields = wrapper[0].childNodes.length;
-    if(total_fields < max_fields){
-        $(wrapper).append('<div class="row" id="row'+i+'"><div class="col-md-2"><label class="form-label">Class</label><select id="'+i+'" class="form-select" name="product_add"><?php $select = "SELECT * FROM product";
-    $runn = mysqli_query($conn, $select);
-    while ($product_data = mysqli_fetch_array($runn)) { ?>
-       <option value="<?php echo $product_data['product_id'];?>"><?php echo $product_data['product_name'];?></option><?php }?>
-        </select></div><div class="col-md-2"><label class="form-label">Condition</label><select class="form-select " id="'+i+'" name="condition"><option value="1"> Purchase</option><option value="2"> Borrow</option></select></div><div class="col-md-2"><label class="form-label">Price</label><input type="text" class="form-control" id="input1'+i+'" name="price[]"  /></div><div class="col-md-2"><label class="form-label">Quantity</label><input type="text" id="input2'+i+'" name="qty[]" class="form-control" /></div><div class="col-md-2"><label class="form-label">Total</label><input type="text" id="myInput'+i+'" name="main_input[]" class="form-control" /></div><div class="col-md-2"><br></div></div>');
-    }
-});
-$(remove_button).click(function(e){
-    e.preventDefault();
-    var total_fields = wrapper[0].childNodes.length;
-    if(total_fields>1){
-        wrapper[0].childNodes[total_fields-1].remove();
-    }
-});
-</script>
     <?php include_once 'jslink.php' ?>
 
 </body>
