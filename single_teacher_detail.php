@@ -1,6 +1,16 @@
+<?php 
+ob_start();
+$id = $_GET['id'];
+if (empty($id)) {
+    header("location: find_teacher.php");
+}
+$select = "SELECT * FROM teacher_data WHERE tech_id='$id'";
+     $runn = mysqli_query($conn, $select);
+    $tech_data = mysqli_fetch_array($runn);
+?>
 <div class="profile-bg">
     <div class="profile-img">
-        <img src="assets/images/teacher-img/img_avatar.png" alt="Profile Image">
+        <img src="files/<?php echo $tech_data['tech_img'];?>" alt="Profile Image">
     </div>
 </div>
 <div class="row">
@@ -11,23 +21,29 @@
                 <table class="table">
                     <tr>
                         <th>Teacher Name</th>
-                        <td>Syed Husnain Shah</td>
+                        <td><?php echo $tech_data['tech_name'];?></td>
                     </tr>
                     <tr>
                         <th>Teacher CNIC</th>
-                        <td>33100-0000000-0</td>
+                        <td><?php echo $tech_data['tech_cnic'];?></td>
                     </tr>
                     <tr>
                         <th>Teacher Contact No</th>
-                        <td>0300-0000000</td>
+                        <td><?php echo $tech_data['tech_numer'];?></td>
                     </tr>
                     <tr>
                         <th>Gender</th>
-                        <td>Male</td>
+                        <td><?php if ($tech_data['tech_gen']==1) {
+                            echo "Male";
+                        }else if ($tech_data['tech_gen']==2) {
+                            echo "Female";
+                        }else{
+                            echo "No result";
+                        } ;?></td>
                     </tr>
                     <tr>
                         <th>Date of Birth</th>
-                        <td>10/10/2021</td>
+                        <td><?php echo $tech_data['tech_dob'];?></td>
                     </tr>
                     <tr>
                         <th>Age</th>
@@ -35,11 +51,23 @@
                     </tr>
                     <tr>
                         <th>Religion</th>
-                        <td>Islam</td>
+                        <td><?php if ($tech_data['tech_rlig']==1) {
+                            echo "Islam";
+                        }else if ($tech_data['tech_gen']==2) {
+                            echo "Christian";
+                        }else{
+                            echo "No result";
+                        } ;?></td>
                     </tr>
                     <tr>
                         <th>Material Status</th>
-                        <td>Maried</td>
+                        <td><?php if ($tech_data['m_status']==1) {
+                            echo "Single";
+                        }else if ($tech_data['m_status']==2) {
+                            echo "Maried";
+                        }else{
+                            echo "No result";
+                        } ;?></td>
                     </tr>
                     
                 </table>
@@ -54,19 +82,32 @@
                 <table class="table">
                     <tr>
                         <th>Degination</th>
-                        <td>Teacher</td>
+                        <td><?php if ($tech_data['tech_desig']==1) {
+                            echo "Senior";
+                        }else if ($tech_data['tech_desig']==2) {
+                            echo "Junior";
+                        }else{
+                            echo "No result";
+                        } ;?></td>
                     </tr>
                     <tr>
                         <th>Subject</th>
-                        <td>Chemistry</td>
+                        <td><?php
+
+                         $sub_id =  $tech_data['tech_sub'];
+$select = "SELECT * FROM subject WHERE subject_id='$sub_id'";
+     $runns = mysqli_query($conn, $select);
+    $subject_data = mysqli_fetch_array($runns);
+    echo $subject_data['sub_name'];
+                    ?></td>
                     </tr>
                     <tr>
                         <th>Registration No</th>
-                        <td>100-2000-1000</td>
+                        <td><?php echo $tech_data['tech_reg'];?></td>
                     </tr>
                     <tr>
-                        <th>Date of Admittion</th>
-                        <td>10/10/2021</td>
+                        <th>Date of Joining</th>
+                        <td><?php echo $tech_data['date'];?></td>
                     </tr>
                 </table>
             </div>
@@ -80,31 +121,49 @@
                 <table class="table">
                     <tr>
                         <th>Father Name</th>
-                        <td>Syed Husnain Shah</td>
+                        <td><?php echo $tech_data['tech_father_name'];?></td>
                     </tr>
                     <tr>
                         <th>Father CNIC</th>
-                        <td>33100-0000000-0</td>
+                        <td><?php echo $tech_data['tech_f_cnic'];?></td>
                     </tr>
                     <tr>
                         <th>Father Contact No</th>
-                        <td>0300-0000000</td>
+                        <td><?php echo $tech_data['tech_f_number'];?></td>
                     </tr>
                     <tr>
                         <th>Mother Name</th>
-                        <td>John Deo</td>
+                        <td><?php if ($tech_data['tech_m_name']==''){
+                            echo "No Result";
+                        }else{
+                            echo $tech_data['tech_m_name'];
+                        } ?>
+                            
+                       </td>
                     </tr>
                     <tr>
                         <th>Husband Name</th>
-                        <td>John Deo</td>
+                        <td><?php if ($tech_data['tech_hb_name']==''){
+                            echo "No Result";
+                        }else{
+                            echo $tech_data['tech_hb_name'];
+                        } ?></td>
                     </tr>
                     <tr>
                         <th>Husband CNIC</th>
-                        <td>33100-0000000-0</td>
+                        <td><?php if ($tech_data['hb_cnic']==0){
+                            echo "No Result";
+                        }else{
+                            echo $tech_data['hb_cnic'];
+                        } ?></td>
                     </tr>
                     <tr>
                         <th>Husband Contact No</th>
-                        <td>0300-0000000</td>
+                        <td><?php if ($tech_data['hb_number']==0){
+                            echo "No Result";
+                        }else{
+                            echo $tech_data['hb_number'];
+                        } ?></td>
                     </tr>
                 </table>
             </div>
@@ -118,7 +177,14 @@
                 <table class="table">
                     <tr>
                         <th>Provience</th>
-                        <td>Punjab</td>
+                        <td><?php 
+                      
+                        $provin_id =  $tech_data['tech_province'];
+$select = "SELECT * FROM provinces WHERE provinces_id='$provin_id'";
+     $runns = mysqli_query($conn, $select);
+    $subject_data = mysqli_fetch_array($runns);
+    echo $subject_data['province_name'];
+                    ?></td>
                     </tr>
                     <tr>
                         <th>City</th>

@@ -28,15 +28,19 @@ if (isset($_REQUEST['submit'])) {
     $tmpname =  $_FILES["tech_img"]["tmp_name"];
     $folder = "files/".$filename;
     move_uploaded_file($tmpname, $folder);
+    $time = date("G:i:s A");
+    $date = date("d l M");
 
-    $inert = "INSERT INTO `teacher_data`(`tech_reg`, `tech_name`, `tech_img`, `tech_cnic`, `tech_numer`, `tech_rlig`, `tech_desig`, `tech_sub`, `d_o_j`, `tech_gen`, `tech_dob`, `m_status`, `tech_hb_name`, `hb_cnic`, `hb_number`, `tech_father_name`, `tech_f_cnic`, `tech_f_number`, `tech_m_name`, `tech_province`, `tech_city`, `tech_adres`) VALUES ('$tech_reg', '$tech_name', '$filename', '$tech_cnic', '$tech_numer', '$tech_rlig', '$tech_desig', '$tech_sub', '$d_o_j', '$tech_gen', '$tech_dob', '$m_status', '$tech_hb_name', '$hb_cnic', '$hb_number', '$tech_father_name', '$tech_f_cnic', '$tech_f_number', '$tech_m_name', '$tech_province', '$tech_city', '$tech_city')";
+    $inert = "INSERT INTO `teacher_data`(`tech_reg`, `tech_name`, `tech_img`, `tech_cnic`, `tech_numer`, `tech_rlig`, `tech_desig`, `tech_sub`, `d_o_j`, `tech_gen`, `tech_dob`, `m_status`, `tech_hb_name`, `hb_cnic`, `hb_number`, `tech_father_name`, `tech_f_cnic`, `tech_f_number`, `tech_m_name`, `tech_province`, `tech_city`, `tech_adres`, `time`, `date`) VALUES ('$tech_reg', '$tech_name', '$filename', '$tech_cnic', '$tech_numer', '$tech_rlig', '$tech_desig', '$tech_sub', '$d_o_j', '$tech_gen', '$tech_dob', '$m_status', '$tech_hb_name', '$hb_cnic', '$hb_number', '$tech_father_name', '$tech_f_cnic', '$tech_f_number', '$tech_m_name', '$tech_province', '$tech_city', '$tech_adres', '$time', '$date')";
     $tech_runn = mysqli_query($conn, $inert);
     if ($tech_runn) {
-       echo "SUbmit";    
+       echo '<div class="bg-success" style="width: 100%;padding: 10px;color:white;text-align: center;font-weight: bold;border-radius:10px;">Your Data Submit</div>';
 }else{
     echo mysqli_error($conn);
-}}
+}
+}
 ?>
+
 <form class="row g-4" method="POST" enctype="multipart/form-data">
     <div class="col-md-6">
         <label class="form-label">Registration No</label>
