@@ -31,11 +31,15 @@ if (isset($_REQUEST['submit'])) {
     $tech_city = $_REQUEST['tech_city'];
     $tech_adres = $_REQUEST['tech_adres'];
     $tech_adres = $_REQUEST['tech_adres'];
-
-     $filename = $_FILES["tech_img"]["name"];
+    if ($filename !='') {
+       $filename = $_FILES["tech_img"]["name"];
     $tmpname =  $_FILES["tech_img"]["tmp_name"];
     $folder = "files/".$filename;
     move_uploaded_file($tmpname, $folder);
+    }else{
+        $filename = $tech_data['tech_img'];
+    }
+     
 
     $update = "UPDATE `teacher_data` SET `tech_reg`='$tech_reg',`tech_name`='$tech_name',`tech_img`='$filename',`tech_cnic`='$tech_cnic',`tech_numer`='$tech_numer',`tech_rlig`='$tech_rlig',`tech_desig`='$tech_desig',`tech_sub`='$tech_sub',`tech_gen`='$tech_gen',`tech_dob`='$tech_dob',`m_status`='$m_status',`tech_hb_name`='$tech_hb_name',`hb_cnic`='$hb_cnic',`hb_number`='$hb_number',`tech_father_name`='$tech_father_name',`tech_f_cnic`='$tech_f_cnic',`tech_f_number`='$tech_f_number',`tech_m_name`='$tech_m_name',`tech_province`='$tech_province',`tech_city`='$tech_city',`tech_adres`='$tech_adres' WHERE tech_id='$id'";
     $sql = mysqli_query($conn,$update);
@@ -86,7 +90,7 @@ if (isset($_REQUEST['submit'])) {
     <div class="col-md-6">
         <label class="form-label">Teacher Degination</label>
         <select class="form-select" name="tech_desig"> value="<?php echo $tech_data['tech_desig'];?>">
-            <option selected>Teacher</option>
+            
             <option value="1">Senior Teacher</option>
             <option value="2">Junier Teacher</option>
         </select>
@@ -100,11 +104,12 @@ $select = "SELECT * FROM subject WHERE subject_id='$sub_id'";
      $runns = mysqli_query($conn, $select);
     $subject_data = mysqli_fetch_array($runns);
     echo $subject_data['sub_name'];?></span>
-      <select name="tech_sub" class="form-control" id="">
+      <select name="tech_sub" class="form-control" id="" required>
          <?php
              $select = "SELECT * FROM subject";
                 $runn = mysqli_query($conn, $select);
-             while ($subj_data = mysqli_fetch_array($runn)){?>
+             while ($subj_data = mysqli_fetch_array($runn)){ ?>
+
                <option value="<?php $subj_data['subject_id']?>"><?php echo $subj_data['sub_name'];?></option>
             
            <?php }?>
@@ -124,12 +129,12 @@ $select = "SELECT * FROM gene WHERE gene_id=$tech_gene_id";
 
          ?></span>
         
-        <select class="form-select" name="tech_gen">
+        <select class="form-select" name="tech_gen" required>
             <?php
              $select = "SELECT * FROM gene";
      $runn = mysqli_query($conn, $select);
              while ($gene_data = mysqli_fetch_array($runn)){?>
-               <option value="<?php $gene_data['gene_id']?>"><?php echo $gene_data['gene_name'];?></option>
+               <option selected value="<?php $gene_data['gene_id']?>"><?php echo $gene_data['gene_name'];?></option>
             
            <?php }?>
             
@@ -215,7 +220,7 @@ $select = "SELECT * FROM city WHERE city_id=$tech_city_id";
      echo $city_data_show['city_name'];
 
          ?></span>
-        <select name="tech_city" class="form-select" id="">
+        <select name="tech_city" class="form-select" id="" required>
            <?php
              $select = "SELECT * FROM city";
      $runn = mysqli_query($conn, $select);
