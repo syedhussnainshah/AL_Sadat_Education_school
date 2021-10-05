@@ -205,7 +205,7 @@ $select = "SELECT * FROM provinces WHERE provinces_id='$provin_id'";
 <div class="container option_buton">
     <div class="row">
         <div class="col-md-3"><a href="edit_teacher.php?id=<?php echo $tech_data['tech_id'];?>"> <input type="submit" value="Edit Record" class="btn btn-primary"></a></div>
-        <div class="col-md-3"><a href="delete_student.php?id=<?php echo $general_data['student_id'];?>"><input type="submit" value="Delete Record" class="btn btn-danger"></a></div>
+        <div class="col-md-3"><a href="delete_teacher.php?id=<?php echo $tech_data['tech_id'];?>"><input type="submit" value="Delete Record" class="btn btn-danger"></a></div>
         <div class="col-md-3"><a href="submit_fee.php?id=<?php echo $general_data['student_id'];?>"><input type="submit" value="Submit Fee" class="btn btn-danger"></a></div>
         <div class="col-md-3"><a href="purchase.php?id=<?php echo $general_data['student_id'];?>"><input type="submit" value="Product" class="btn btn-danger"></a></div>
     </div>

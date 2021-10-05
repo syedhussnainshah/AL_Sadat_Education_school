@@ -117,7 +117,7 @@ if (isset($_REQUEST['submit'])) {
             
            <?php }?>
             
-        </select>
+        </select>       
     </div>
 
     <div class="col-md-6">
