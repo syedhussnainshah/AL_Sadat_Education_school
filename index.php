@@ -18,7 +18,7 @@
                     margin-right: 10px;background: var(--sidebarcolor);
                 }
                 .index_section .row .col-md-4 a h3{
-                    float: right;font-size: 20px;padding-top: 30px;text-decoration: none;color: white;
+                    float: right;font-size: 20px;padding-top: 25px;text-decoration: none;color: white;
                 }
                 .index_section .row .col-md-4 .row {
                     padding: 10px;display: flex;justify-content: center;align-items: center;
@@ -38,12 +38,22 @@ $All_Boys = mysqli_fetch_array($runn);
 $select = "SELECT count(student_id) as number_girls FROM student_data WHERE std_gen=2";
 $runn = mysqli_query($conn, $select);
 $all_girls = mysqli_fetch_array($runn);
+$select = "SELECT count(tech_id) as tech_number FROM teacher_data";
+$runn = mysqli_query($conn, $select);
+$all_tech = mysqli_fetch_array($runn);
+$select = "SELECT count(tech_id) as tech_senior_number FROM teacher_data WHERE tech_desig=1";
+$runn = mysqli_query($conn, $select);
+$senior_tech = mysqli_fetch_array($runn);
+$select = "SELECT count(tech_id) as tech_junior_number FROM teacher_data WHERE tech_desig=2";
+$runn = mysqli_query($conn, $select);
+$junior_tech = mysqli_fetch_array($runn);
     
             ?>
             <div class="container index_section">
                 <div class="row">
                     <div class="col-md-4  text-white" style="border-radius: 10px;height: 200px;">
-                        <h1>Students</h1>
+                        <h1>Students </h1>
+                        <hr>
                         <div class="row">
                             <div class="col-md-3"><h4>Total</h4> <span><?php echo $All_student['number_student']?></span></div>
                             <div class="col-md-3">
@@ -62,8 +72,26 @@ $all_girls = mysqli_fetch_array($runn);
                         <a href=""><h3>More Detail</h3></a>
                         
                     </div>
-                    <div class="col-md-4 bg-primary text-white" style="border-radius: 10px;height: 200px;">
+                    <div class="col-md-4  text-white" style="border-radius: 10px;height: 200px;">
                         <h1>Teachers</h1>
+                        <hr>
+                        <div class="row">
+                            <div class="col-md-3"><h4>Total</h4> <span><?php echo $all_tech['tech_number']?></span></div>
+                            <div class="col-md-3">
+                                <h4>Senior</h4> <span><?php echo $senior_tech['tech_senior_number']?></span>
+                                
+                            </div>
+                            <?php 
+
+
+                            ?>
+                            <div class="col-md-3">
+                                <h4>Junior</h4> <span><?php echo $junior_tech['tech_junior_number']?></span>
+                                
+                            </div>
+                        </div>
+                        <a href=""><h3>More Detail</h3></a>
+                        
                     </div>
                 </div>
             </div>
