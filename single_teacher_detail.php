@@ -4,6 +4,7 @@ $id = $_GET['id'];
 if (empty($id)) {
     header("location: find_teacher.php");
 }
+
 $select = "SELECT * FROM teacher_data WHERE tech_id='$id'";
      $runn = mysqli_query($conn, $select);
     $tech_data = mysqli_fetch_array($runn);
@@ -201,7 +202,11 @@ $select = "SELECT * FROM provinces WHERE provinces_id='$provin_id'";
 
 </div>
 
-<form action="">
-    <input type="submit" value="Edit Record" class="btn btn-primary">
-    <input type="submit" value="Delete Record" class="btn btn-danger">
-</form>
+<div class="container option_buton">
+    <div class="row">
+        <div class="col-md-3"><a href="edit_teacher.php?id=<?php echo $tech_data['tech_id'];?>"> <input type="submit" value="Edit Record" class="btn btn-primary"></a></div>
+        <div class="col-md-3"><a href="delete_student.php?id=<?php echo $general_data['student_id'];?>"><input type="submit" value="Delete Record" class="btn btn-danger"></a></div>
+        <div class="col-md-3"><a href="submit_fee.php?id=<?php echo $general_data['student_id'];?>"><input type="submit" value="Submit Fee" class="btn btn-danger"></a></div>
+        <div class="col-md-3"><a href="purchase.php?id=<?php echo $general_data['student_id'];?>"><input type="submit" value="Product" class="btn btn-danger"></a></div>
+    </div>
+</div>

@@ -99,7 +99,7 @@ $user_page = mysqli_fetch_array($sql);
 
                             <?php if ($user_page['add_teacher']=='1') {?>
                                <li class="sidenav-item">
-                                <a href="find_teacher.php" class="sidenav-link">Add Teacher</a>
+                                <a href="find_teacher.php" class="sidenav-link">Show Teacher</a>
                             </li>
                             <?php }else{
                                 echo"Restriction";
