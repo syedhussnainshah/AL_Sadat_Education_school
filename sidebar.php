@@ -1,4 +1,10 @@
 <!-- Sidebar Start Here -->
+<?php
+ $user_id = $_SESSION['id'];
+$select = "SELECT * FROM `user_pages` WHERE user_id=$user_id";
+$sql = mysqli_query($conn, $select);
+$user_page = mysqli_fetch_array($sql);
+?>
 <div class="offcanvas offcanvas-start" tabindex="-1" id="Sidebar" aria-labelledby="Sidebar">
     <div class="offcanvas-header">
         <h1 class="" style="color: white;font-family: Roman; font-size: 80px;">    <i class="fas fa-graduation-cap"></i></h1>
@@ -35,21 +41,32 @@
                             <a href="delete_student.php" class="sidenav-link">Delete Student</a>
                         </li> -->
                         <ul class="collapse multi-collapse" id="student-dropdown">
-                            <li class="sidenav-item">
+                            
+                                 <li class="sidenav-item">
+                                    <?php if ($user_page['add_student']=='1') {?>
                                 <a href="add_student.php" class="sidenav-link">Add Student</a>
+                                <?php }else{
+                            echo "REstiction On Page";
+                           }?>
                             </li>
-
-                            <li class="sidenav-item">
+                           
+                           
+                           <?php if ($user_page['show_student']=='1') {?>
+                              <li class="sidenav-item">
                                 <a href="find_student.php" class="sidenav-link">Show Student</a>
                             </li>
+                           <?php }else{
+                            echo"Restriction From admin";}?>
 
-                            <li class="sidenav-item">
+                            
+
+                            <!-- <li class="sidenav-item">
                                 <a href="edit_student.php" class="sidenav-link">Edit Student</a>
                             </li>
 
                             <li class="sidenav-item">
                                 <a href="edit_student.php" class="sidenav-link">Edit Student</a>
-                            </li>
+                            </li> -->
 
                         </ul>
                     </li>
@@ -70,22 +87,33 @@
                         </li> -->
 
                         <ul class="collapse multi-collapse" id="Teacher-dropdown">
-                            <li class="sidenav-item">
+                            <?php if ($user_page['add_teacher']=='1') {?>
+                               <li class="sidenav-item">
                                 <a href="add_teacher.php" class="sidenav-link">Add Teacher</a>
                             </li>
+                            <?php }else{
+                                echo"Restriction";
 
-                            <li class="sidenav-item">
-                                <a href="find_teacher.php" class="sidenav-link">Show Teacher</a>
+                            }?>
+                            
+
+                            <?php if ($user_page['add_teacher']=='1') {?>
+                               <li class="sidenav-item">
+                                <a href="find_teacher.php" class="sidenav-link">Add Teacher</a>
                             </li>
+                            <?php }else{
+                                echo"Restriction";
 
-                            <li class="sidenav-item">
+                            }?>
+
+                            <!-- <li class="sidenav-item">
                                 <a href="edit_teacher.php" class="sidenav-link">Edit Teacher</a>
                             </li>
 
                             <li class="sidenav-item">
                                 <a href="delete_teacher.php" class="sidenav-link">Delete Teacher</a>
                             </li>
-
+ -->
                         </ul>
                     </li>
 
