@@ -110,7 +110,7 @@ $select = "SELECT * FROM subject WHERE subject_id='$sub_id'";
                 $runn = mysqli_query($conn, $select);
              while ($subj_data = mysqli_fetch_array($runn)){ ?>
 
-               <option value="<?php $subj_data['subject_id']?>"><?php echo $subj_data['sub_name'];?></option>
+               <option value="<?php echo $subj_data['subject_id']?>"><?php echo $subj_data['sub_name'];?></option>
             
            <?php }?>
     </select>
@@ -134,7 +134,7 @@ $select = "SELECT * FROM gene WHERE gene_id=$tech_gene_id";
              $select = "SELECT * FROM gene";
      $runn = mysqli_query($conn, $select);
              while ($gene_data = mysqli_fetch_array($runn)){?>
-               <option selected value="<?php $gene_data['gene_id']?>"><?php echo $gene_data['gene_name'];?></option>
+               <option  value="<?php echo $gene_data['gene_id']?>"><?php echo $gene_data['gene_name'];?></option>
             
            <?php }?>
             
@@ -205,7 +205,7 @@ $select = "SELECT * FROM gene WHERE gene_id=$tech_gene_id";
              $select = "SELECT * FROM provinces";
      $runn = mysqli_query($conn, $select);
              while ($province_data = mysqli_fetch_array($runn)){?>
-               <option value="<?php $province_data['provinces_id']?>"><?php echo $province_data['province_name'];?></option>
+               <option value="<?php echo $province_data['provinces_id']?>"><?php echo $province_data['province_name'];?></option>
            <?php }?>
         </select>
     </div>
@@ -225,7 +225,7 @@ $select = "SELECT * FROM city WHERE city_id=$tech_city_id";
              $select = "SELECT * FROM city";
      $runn = mysqli_query($conn, $select);
              while ($province_data = mysqli_fetch_array($runn)){?>
-               <option value="<?php $province_data['city_id']?>"><?php echo $province_data['city_name'];?></option>
+               <option value="<?php echo $province_data['city_id']?>"><?php echo $province_data['city_name'];?></option>
            <?php }?>
         </select>
        

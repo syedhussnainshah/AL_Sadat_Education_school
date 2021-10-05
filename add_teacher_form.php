@@ -88,7 +88,17 @@ if (isset($_REQUEST['submit'])) {
 
     <div class="col-md-6">
         <label class="form-label">Teacher Subject</label>
-        <input type="text" name="tech_sub" class="form-control">
+        <select name="tech_sub" class="form-control" id="" required>
+         <?php
+             $select = "SELECT * FROM subject";
+                $runn = mysqli_query($conn, $select);
+             while ($subj_data = mysqli_fetch_array($runn)){ ?>
+
+               <option value="<?php echo $subj_data['subject_id']?>"><?php echo $subj_data['sub_name'];?></option>
+            
+           <?php }?>
+    </select>
+        
     </div> 
 
     <div class="col-md-6">
@@ -98,11 +108,15 @@ if (isset($_REQUEST['submit'])) {
 
     <div class="col-md-6">
         <label class="form-label">Teacher Gender</label>
-        <select class="form-select" name="tech_gen">
-            <option selected>Select Gender</option>
-            <option>Male</option>
-            <option>Female</option>
-            <option>Other</option>
+         <select class="form-select" name="tech_gen" required>
+            <?php
+             $select = "SELECT * FROM gene";
+     $runn = mysqli_query($conn, $select);
+             while ($gene_data = mysqli_fetch_array($runn)){?>
+               <option  value="<?php echo $gene_data['gene_id']?>"><?php echo $gene_data['gene_name'];?></option>
+            
+           <?php }?>
+            
         </select>
     </div>
 
