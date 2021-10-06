@@ -35,36 +35,22 @@
                 }
             </style>
             <?php 
+$select = "SELECT * FROM class";
+$sql = mysqli_query($conn,$select);
 
     
             ?>
             <div class="container index_section">
                 <div class="row">
+                    <?php while ($classes_fetch = mysqli_fetch_array($sql)) {?>
+               
+                  
                     <div class="col-md-4  text-white" style="border-radius: 10px;height: 200px;">
-                        <a href=""><i class="fas fa-city"></i><h1>City</h1></a>
+                        <a href="class_books_add_view.php?id=<?php echo $classes_fetch['class_id'];?>"></i><h1><?php echo $classes_fetch['class_name']?></h1></a>
                         
                     </div>
-                    <div class="col-md-4  text-white" style="border-radius: 10px;height: 200px;">
-                        <a href=""><i class="fas fa-users"></i><h1>Class</h1></a>
-                        
-                    </div>
-                    
-                    <div class="col-md-4  text-white" style="border-radius: 10px;height: 200px;">
-                        <a href=""><i class="fas fa-book"></i><h1>Product</h1></a>
-                        
-                    </div>
-                    <div class="col-md-4  text-white" style="border-radius: 10px;height: 200px;">
-                        <a href=""><i class="fas fa-people-arrows"></i><h1>Gene</h1></a>
-                        
-                    </div>
-                    <div class="col-md-4  text-white" style="border-radius: 10px;height: 200px;">
-                        <a href=""><i class="fas fa-user-shield"></i><h1>Religion</h1></a>
-                        
-                    </div>
-                    <div class="col-md-4  text-white" style="border-radius: 10px;height: 200px;">
-                        <a href="classes_books.php"><i class="fas fa-book"></i><h1>Subject</h1></a>
-                        
-                    </div>
+                      <?php }?>
+                   
 
                 </div>
             </div>
