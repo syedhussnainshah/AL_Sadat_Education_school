@@ -1,5 +1,6 @@
 <!-- Sidebar Start Here -->
 <?php
+ob_start();
  $user_id = $_SESSION['id'];
 $select = "SELECT * FROM `user_pages` WHERE user_id=$user_id";
 $sql = mysqli_query($conn, $select);

@@ -1,4 +1,5 @@
-<?php  
+<?php 
+ob_start(); 
 include_once "connection.php";
 if (isset($_REQUEST['submit'])) {
     $std_reg = $_REQUEST['std_reg'];
@@ -36,9 +37,9 @@ if ($runn_std) {
     $insert_gardian = "INSERT INTO `std_gardian`(`gardian_name`, `gardian_cnic`, `gardian_number`, `gardian_relation`, `std_id`) VALUES ('$gardian_name', '$gardian_cnic', '$gardian_number', '$gardian_relation', '$std_id')"; 
     $gardians = mysqli_query($conn, $insert_gardian);
 if ($gardians) {
-        echo "gardian detail submit";
+       echo "ok";
 }else{
-        echo "not submit gardian detail";
+        
 }
 
  }else{

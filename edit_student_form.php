@@ -1,5 +1,5 @@
 <?php 
-session_start();
+
 ob_start();
 $id = $_GET['id'];
 $id_select = $_GET['id'];
