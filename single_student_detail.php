@@ -1,6 +1,6 @@
 <?php 
 ob_start();
-session_start();
+
 $id = $_GET['id'];
 if (empty($id)) {
     header("location: index.php");

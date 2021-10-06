@@ -15,7 +15,7 @@
             <style>
 
                 .index_section .row .col-md-4{
-                    background: var(--sidebarcolor);margin: 1px;
+                    background: var(--sidebarcolor);margin: 10px;
                 }
                 .index_section .row .col-md-4 a h3{
                     float: right;font-size: 20px;padding-top: 25px;text-decoration: none;color: white;
@@ -217,7 +217,7 @@ $girls_eigth = mysqli_fetch_array($runn);
                                 
                             </div>
                         </div>
-                        <a href=""><h3>More Detail</h3></a>
+                        <a href="nursery_class_detail.php"><h3>More Detail</h3></a>
                         
                     </div>
                     <div class="col-md-4  text-white" style="border-radius: 10px;height: 200px;">
@@ -238,7 +238,7 @@ $girls_eigth = mysqli_fetch_array($runn);
                                 
                             </div>
                         </div>
-                        <a href=""><h3>More Detail</h3></a>
+                        <a href="prep_class_detail.php"><h3>More Detail</h3></a>
                         
                     </div>
                     <div class="col-md-4  text-white" style="border-radius: 10px;height: 200px;">
@@ -259,7 +259,7 @@ $girls_eigth = mysqli_fetch_array($runn);
                                 
                             </div>
                         </div>
-                        <a href=""><h3>More Detail</h3></a>
+                        <a href="one_class_detail.php"><h3>More Detail</h3></a>
                         
                     </div>
                     <div class="col-md-4  text-white" style="border-radius: 10px;height: 200px;">
@@ -280,7 +280,7 @@ $girls_eigth = mysqli_fetch_array($runn);
                                 
                             </div>
                         </div>
-                        <a href=""><h3>More Detail</h3></a>
+                        <a href="two_class_detail.php"><h3>More Detail</h3></a>
                         
                     </div>
                     <div class="col-md-4  text-white" style="border-radius: 10px;height: 200px;">
@@ -301,7 +301,7 @@ $girls_eigth = mysqli_fetch_array($runn);
                                 
                             </div>
                         </div>
-                        <a href=""><h3>More Detail</h3></a>
+                        <a href="three_class_detail.php"><h3>More Detail</h3></a>
                         
                     </div>
                     <div class="col-md-4  text-white" style="border-radius: 10px;height: 200px;">
@@ -322,7 +322,7 @@ $girls_eigth = mysqli_fetch_array($runn);
                                 
                             </div>
                         </div>
-                        <a href=""><h3>More Detail</h3></a>
+                        <a href="four_class_detail.php"><h3>More Detail</h3></a>
                         
                     </div>
                     <div class="col-md-4  text-white" style="border-radius: 10px;height: 200px;">
@@ -343,7 +343,7 @@ $girls_eigth = mysqli_fetch_array($runn);
                                 
                             </div>
                         </div>
-                        <a href=""><h3>More Detail</h3></a>
+                        <a href="five_class_detail.php"><h3>More Detail</h3></a>
                         
                     </div>
                     <div class="col-md-4  text-white" style="border-radius: 10px;height: 200px;">
@@ -364,7 +364,7 @@ $girls_eigth = mysqli_fetch_array($runn);
                                 
                             </div>
                         </div>
-                        <a href=""><h3>More Detail</h3></a>
+                        <a href="six_class_detail.php"><h3>More Detail</h3></a>
                         
                     </div>
                     <div class="col-md-4  text-white" style="border-radius: 10px;height: 200px;">
@@ -385,7 +385,7 @@ $girls_eigth = mysqli_fetch_array($runn);
                                 
                             </div>
                         </div>
-                        <a href=""><h3>More Detail</h3></a>
+                        <a href="seven_class_detail.php"><h3>More Detail</h3></a>
                         
                     </div>
                     <div class="col-md-4  text-white" style="border-radius: 10px;height: 200px;">
@@ -406,7 +406,7 @@ $girls_eigth = mysqli_fetch_array($runn);
                                 
                             </div>
                         </div>
-                        <a href=""><h3>More Detail</h3></a>
+                        <a href="eight_class_detail.php"><h3>More Detail</h3></a>
                         
                     </div>
 

@@ -15,7 +15,7 @@
         <main>
             <style>
                 .index_section .row .col-md-4{
-                    margin-right: 10px;background: var(--sidebarcolor);
+                    margin: 10px;background: var(--sidebarcolor);
                 }
                 .index_section .row .col-md-4 a h3{
                     float: right;font-size: 20px;padding-top: 25px;text-decoration: none;color: white;
@@ -91,6 +91,18 @@ $junior_tech = mysqli_fetch_array($runn);
                             </div>
                         </div>
                         <a href=""><h3>More Detail</h3></a>
+                        
+                    </div>
+                    <style>
+                        .setting_card{
+                            display: flex;justify-content: center;align-items: center;
+                        }
+                        .setting_card a i{
+                            font-size: 140px;color: white;
+                        }
+                    </style>
+                    <div class="col-md-4 setting_card  text-white" style="border-radius: 10px;height: 200px;">
+                            <a href="web_setting_from_database.php"><i class="fas fa-cog"></i></a>
                         
                     </div>
                 </div>
