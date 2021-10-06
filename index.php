@@ -69,7 +69,7 @@ $junior_tech = mysqli_fetch_array($runn);
                                 
                             </div>
                         </div>
-                        <a href=""><h3>More Detail</h3></a>
+                        <a href="student_class_card.php"><h3>More Detail</h3></a>
                         
                     </div>
                     <div class="col-md-4  text-white" style="border-radius: 10px;height: 200px;">
