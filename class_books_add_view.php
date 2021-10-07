@@ -109,7 +109,7 @@ $sql = mysqli_query($conn,$select);
                         margin-left: 10px;
                     }
                 </style>
-                <td class="icon_detail"><center><a href="edit_student_form.php?id=<?php echo $books_detail['class_id'];?>"> <i class="fas fa-edit"></i></a><a href="delete_student.php?id=<?php echo $books_detail['class_id'];?>"><i class="fas fa-trash-alt"></i></a><a href="single_student_detail.php?id=<?php echo $books_detail['class_id'];?>" class="icons blue"><i class="fas fa-eye"></i></a></center></td>
+                <td class="icon_detail"><center><a href="class_books_add_view_edit.php?id=<?php echo $books_detail['class_id'];?>"> <i class="fas fa-edit"></i></a><a href="delete_student.php?id=<?php echo $books_detail['class_id'];?>"><i class="fas fa-trash-alt"></i></a><a href="single_student_detail.php?id=<?php echo $books_detail['class_id'];?>" class="icons blue"><i class="fas fa-eye"></i></a></center></td>
             </tr>
            <?php }?>
             
