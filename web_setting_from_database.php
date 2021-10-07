@@ -50,7 +50,7 @@
                     </div>
                     
                     <div class="col-md-4  text-white" style="border-radius: 10px;height: 200px;">
-                        <a href=""><i class="fas fa-book"></i><h1>Product</h1></a>
+                        <a href="product_delete_view.php"><i class="fas fa-book"></i><h1>Product</h1></a>
                         
                     </div>
                     <div class="col-md-4  text-white" style="border-radius: 10px;height: 200px;">
