@@ -1,5 +1,9 @@
 <?php session_start();
 $user_id = $_SESSION['id'];
+if (empty($user_id)) {
+   header('location:login.php');
+}
+
 ?><?php include_once"connection.php";?>
 <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
     <!-- Container wrapper -->
@@ -47,7 +51,7 @@ $user_id = $_SESSION['id'];
                     <a class="dropdown-item" href="#">Settings</a>
                 </li>
                 <li>
-                    <a class="dropdown-item" href="#">Logout</a>
+                    <a class="dropdown-item" href="log_out.php">Logout</a>
                 </li>
             </ul>
         </div>
