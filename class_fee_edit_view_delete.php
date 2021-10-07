@@ -1,6 +1,6 @@
 <?php 
 ob_start();
-$id = $_GET['id'];
+
 
 ?>
 <!DOCTYPE html>
@@ -26,16 +26,12 @@ $id = $_GET['id'];
 
    <?php 
 if (isset($_REQUEST['submit'])) {
-    $book_name = $_REQUEST['book_name'];
-    $book_price = $_REQUEST['book_price'];
+    $class_name = $_REQUEST['class_name'];
+    $class_fee = $_REQUEST['class_fee'];
 
 
-    $filename = $_FILES["book_img"]["name"];
-    $tmpname =  $_FILES["book_img"]["tmp_name"];
-    $folder = "files/".$filename;
-    move_uploaded_file($tmpname, $folder);
-
-    $insert = "INSERT INTO `books`(`book_name`, `book_img`, `book_price`, `class_id`) VALUES ('$book_name','$filename','$book_price', '$id')";
+  
+    $insert = "INSERT INTO `class`(`class_name`, `class_fee`) VALUES ('$class_name', '$class_fee')";
     $sql = mysqli_query($conn,$insert);
     if ($sql) {
         echo "OK";
@@ -47,28 +43,20 @@ if (isset($_REQUEST['submit'])) {
    ?>
         <main>
             <div class="container">
-           <h1 style="background: #457389;color: white;padding: 10px;">  <center>    <?php 
-$select = "SELECT * FROM class WHERE class_id=$id";
-$sql = mysqli_query($conn,$select);
-$class_fee = mysqli_fetch_array($sql);
-echo $class_fee['class_name'];
-                    ?> BOOKS</center></h1>
+           <h1 style="background: #457389;color: white;padding: 10px;"> Class Fee</center></h1>
                     <br>
                 <form action="" method="POST" enctype="multipart/form-data">
                 <div class="row" >
                    
                     
                         <div class="col-md-3">
-                            <label for="" class="form-label">Book Name</label>
-                            <input type="text" name="book_name" class="form-control" placeholder="">
+                            <label for="" class="form-label">Class Name</label>
+                            <input type="text" name="class_name" class="form-control" placeholder="">
                         </div>
+                        
                         <div class="col-md-3">
-                            <label for="" class="form-label">Book Image</label>
-                            <input type="file" name="book_img" class="form-control" placeholder="">
-                        </div>
-                        <div class="col-md-3">
-                            <label for="" class="form-label">Book Price</label>
-                            <input type="number" name="book_price" class="form-control" placeholder="">
+                            <label for="" class="form-label">Class Fee</label>
+                            <input type="number" name="class_fee" class="form-control" placeholder="">
                         </div>
                         <div class="col-md-3 submit_btn">
                             
@@ -84,9 +72,9 @@ echo $class_fee['class_name'];
         <thead>
 
             <tr>
-                <th>Book Image</th>
-                <th>Book Name</th>
-                <th>Book Price</th>
+                <th>Class Name</th>
+                <th>CLass  Fee</th>
+                
                 <th>Action</th>
                 
             </tr>
@@ -94,14 +82,14 @@ echo $class_fee['class_name'];
 
         <tbody>
             <?php 
-$select = "SELECT * FROM books WHERE class_id=$id";
+$select = "SELECT * FROM class ";
 $sql = mysqli_query($conn,$select);
-            while ($books_detail = mysqli_fetch_array($sql)) {?>
+            while ($class_detail = mysqli_fetch_array($sql)) {?>
                <tr>
-                <td><img src="files/<?php echo $books_detail['book_img'];?>" width="61px" alt="Profile Image"></td>
-                <td><?php echo $books_detail['book_name']?></td>
+                
+                <td><?php echo $class_detail['class_name']?></td>
 
-                <td><?php echo $books_detail['book_price']?></td>
+                <td><?php echo $class_detail['class_fee']?></td>
                 
               
                 <style>
@@ -109,7 +97,7 @@ $sql = mysqli_query($conn,$select);
                         margin-left: 10px;
                     }
                 </style>
-                <td class="icon_detail"><center><a href="class_books_add_view_edit.php?id=<?php echo $books_detail['class_id'];?>"> <i class="fas fa-edit"></i></a><a href="delete_student.php?id=<?php echo $books_detail['class_id'];?>"><i class="fas fa-trash-alt"></i></a></center></td>
+                <td class="icon_detail"><center><a href="edit_class_fee.php?id=<?php echo $class_detail['class_id'];?>"> <i class="fas fa-edit"></i></a><a href="delete_student.php?id=<?php echo $class_detail['class_id'];?>"><i class="fas fa-trash-alt"></i></a></center></td>
             </tr>
            <?php }?>
             
