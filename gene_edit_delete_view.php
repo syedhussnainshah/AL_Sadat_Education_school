@@ -26,12 +26,8 @@ ob_start();
 
    <?php 
 if (isset($_REQUEST['submit'])) {
-    $product_name = $_REQUEST['product_name'];
-    $product_price = $_REQUEST['product_price'];
-
-
-  
-    $insert = "INSERT INTO `product`(`product_name`, `product_price`) VALUES ('$product_name', '$product_price')";
+    $gene_name = $_REQUEST['gene_name'];
+      $insert = "INSERT INTO `gene` (`gene_name`) VALUES ('$gene_name')";
     $sql = mysqli_query($conn,$insert);
     if ($sql) {
         echo "OK";
@@ -43,24 +39,23 @@ if (isset($_REQUEST['submit'])) {
    ?>
         <main>
             <div class="container">
-           <h1 style="background: #457389;color: white;padding: 10px;"> Class Fee</center></h1>
+           <h1 style="background: #457389;color: white;padding: 10px;"> Gene</center></h1>
                     <br>
                 <form action="" method="POST" enctype="multipart/form-data">
                 <div class="row" >
                    
                     
                         <div class="col-md-3">
-                            <label for="" class="form-label">Class Name</label>
-                            <input type="text" name="product_name" class="form-control" placeholder="">
+                            <label for="" class="form-label">Gene Name</label>
+                            <input type="text" name="gene_name" class="form-control" placeholder="">
+                            <br>
+                            <input type="submit" name="submit" class="btn btn-primary" value="submt">
                         </div>
                         
-                        <div class="col-md-3">
-                            <label for="" class="form-label">Class Fee</label>
-                            <input type="number" name="product_price" class="form-control" placeholder="">
-                        </div>
+                        
                         <div class="col-md-3 submit_btn">
                             
-                            <input type="submit" name="submit" class="btn btn-primary" value="submt">
+                            
                         </div>
                     
                 </div>
@@ -72,8 +67,8 @@ if (isset($_REQUEST['submit'])) {
         <thead>
 
             <tr>
-                <th>Class Name</th>
-                <th>CLass  Fee</th>
+                <th>Gene Name</th>
+                
                 
                 <th>Action</th>
                 
@@ -82,14 +77,14 @@ if (isset($_REQUEST['submit'])) {
 
         <tbody>
             <?php 
-$select = "SELECT * FROM product ";
+$select = "SELECT * FROM gene ";
 $sql = mysqli_query($conn,$select);
-            while ($product_detail = mysqli_fetch_array($sql)) {?>
+            while ($gene_detail = mysqli_fetch_array($sql)) {?>
                <tr>
                 
-                <td><?php echo $product_detail['product_name']?></td>
+                <td><?php echo $gene_detail['gene_name']?></td>
 
-                <td><?php echo $product_detail['product_price']?></td>
+              
                 
               
                 <style>
@@ -97,7 +92,7 @@ $sql = mysqli_query($conn,$select);
                         margin-left: 10px;
                     }
                 </style>
-                <td class="icon_detail"><center><a href="edit_product.php?id=<?php echo $product_detail['product_id'];?>"> <i class="fas fa-edit"></i></a><a href="delete_poduct.php?id=<?php echo $product_detail['product_id'];?>"><i class="fas fa-trash-alt"></i></a></center></td>
+                <td class="icon_detail"><center><a href="edit_gene.php?id=<?php echo $gene_detail['gene_id'];?>"> <i class="fas fa-edit"></i></a><a href="delete_gene.php?id=<?php echo $gene_detail['gene_id'];?>"><i class="fas fa-trash-alt"></i></a></center></td>
 
             </tr>
            <?php }?>
