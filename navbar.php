@@ -18,29 +18,83 @@ if (empty($user_id)) {
         <!-- Right elements -->
         <div class="d-flex align-items-center ms-auto">
             <!-- Button trigger modal -->
-<!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-  Launch demo modal
-</button>
+<a href="#" class="text-reset me-3" data-bs-toggle="modal" data-bs-target="#calculator">
+            <i class="fas fa-calculator"></i>
+            </a>
+            <style>
+                .input-value{
+    border: .5px solid #dee2e6;
+    border-radius: 5px !important;
+    padding: 10px 20px;
+    text-align: right;
+    box-shadow: 0 0 6px rgb(0 0 0 / 10%);
+    background-color: var(--white) !important;
+}
+.input-value:focus{
+    border-color: #dee2e6 !important;
+    box-shadow: 0 0 6px rgb(0 0 0 / 10%);
+}
+.calc-btn{
+    text-align: center;
+    cursor: pointer;
+    padding: 10px 0px;
+    border-radius: 5px;
+    box-shadow: 0 0 6px rgb(0 0 0 / 10%); 
+    width: 100%;
+    border: none;
+    background-color: var(--white);
+    margin: 8px 0px;
+}
+.calc-btn:focus{
+    background-color: var(--primarycolor);
+    color: var(--white); 
+}
+.result-btn{
+    background-color: var(--primarycolor);
+    color: var(--white);
+}
+/* ================== Calculator Styling End ================== */
 
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        ...
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>
+
+/* Media Quries */
+
+/* Medium devices (tablets, less than 992px) */
+@media (min-width: 991.98px) {
+   
+    /* Sidebar STyling Start */
+    body{
+        margin-left: var(--sidebarwidth);
+    } 
+    .offcanvas{
+        transform: none;
+        visibility: visible !important;
+    } 
+    /* .modal-backdrop.show{
+        opacity: 0 !important;
+    } */
+    /* Sidebar Styling End */
+    
+}
+
+/* Small devices (landscape phones, less than 768px) */
+@media (max-width: 767.98px) {
+    div.dataTables_wrapper div.dataTables_length, div.dataTables_wrapper div.dataTables_filter, div.dataTables_wrapper div.dataTables_info, div.dataTables_wrapper div.dataTables_paginate {
+        text-align: center;
+        margin: 20px 0px;
+    }
+}
+
+/* X-Small devices (portrait phones, less than 576px) */
+@media (max-width: 575.98px) {
+    .box-info{
+        border-radius: 10px;
+        /* background-color: var(--gray); */
+        padding: 10px 0px;
+    }
+}
+
+
+            </style>
   
             <!-- Icon -->
             <a class="text-reset me-3" href="#">
@@ -86,3 +140,117 @@ if (empty($user_id)) {
     <!-- Container wrapper -->
 </nav>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+<!-- Calculator Model COde Start -->
+<div class="modal fade" id="calculator" tabindex="-1" aria-labelledby="calculatorLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="calculatorLabel">Calculator</h5>
+                <button class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="calculator">
+
+                    <div class="row">
+
+                        <div class="col-12">
+                            <input type="text" class="form-control input-value" id="input_value">
+                        </div>
+
+                        <div class="col-3">
+                            <button class="calc-btn" onClick="clr()" value="AC">AC</button>
+                        </div>
+
+                        <div class="col-3">
+                            <button class="calc-btn" onClick="num('(')" value="(">(</button>
+                        </div>
+
+                        <div class="col-3">
+                            <button class="calc-btn" onClick="num(')')" value=")">)</button>
+                        </div>
+
+                        <div class="col-3">
+                            <button class="calc-btn" onClick="num('+')" value="+">+</button>
+                        </div>
+
+                        <div class="col-3">
+                            <button class="calc-btn" onClick="num('1')" value="1">1</button>
+                        </div>
+
+                        <div class="col-3">
+                            <button class="calc-btn" onClick="num('2')" value="2">2</button>
+                        </div>
+
+                        <div class="col-3">
+                            <button class="calc-btn" onClick="num('3')" value="3">3</button>
+                        </div>
+
+                        <div class="col-3">
+                            <button class="calc-btn" onClick="num('-')" value="-">-</button>
+                        </div>
+
+                        <div class="col-3">
+                            <button class="calc-btn" onClick="num('4')" value="4">4</button>
+                        </div>
+
+                        <div class="col-3">
+                            <button class="calc-btn" onClick="num('5')" value="5">5</button>
+                        </div>
+
+                        <div class="col-3">
+                            <button class="calc-btn" onClick="num('6')" value="6">6</button>
+                        </div>
+
+                        <div class="col-3">
+                            <button class="calc-btn" onClick="num('*')" value="*">*</button>
+                        </div>
+
+                        <div class="col-3">
+                            <button class="calc-btn" onClick="num('7')" value="7">7</button>
+                        </div>
+
+                        <div class="col-3">
+                            <button class="calc-btn" onClick="num('8')" value="8">8</button>
+                        </div>
+
+                        <div class="col-3">
+                            <button class="calc-btn" onClick="num('9')" value="9">9</button>
+                        </div>
+
+                        <div class="col-3">
+                            <button class="calc-btn" onClick="num('/')" value="/">/</button>
+                        </div>
+
+                        <div class="col-3">
+                            <button class="calc-btn" onClick="num('0')" value="0">0</button>
+                        </div>
+
+                        <div class="col-3">
+                            <button class="calc-btn" onClick="num('.')" value=".">.</button>
+                        </div>
+
+                        <div class="col-6">
+                            <button class="calc-btn result-btn" onClick="solve()" value="b">=</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Claclator Model Code End -->
+<script>
+    
+function num(val){
+  document.getElementById('input_value').value += val;
+}
+function solve(){
+  let a = document.getElementById('input_value').value;
+  let b = eval(a);
+  document.getElementById('input_value'). value = b;
+}
+function clr(){
+  document.getElementById('input_value').value = "";
+}
+</script>

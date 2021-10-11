@@ -449,3 +449,74 @@ th{
     margin-right: 5px;
 }
 
+.input-value{
+    border: .5px solid #dee2e6;
+    border-radius: 5px !important;
+    padding: 10px 20px;
+    text-align: right;
+    box-shadow: 0 0 6px rgb(0 0 0 / 10%);
+    background-color: var(--white) !important;
+}
+.input-value:focus{
+    border-color: #dee2e6 !important;
+    box-shadow: 0 0 6px rgb(0 0 0 / 10%);
+}
+.calc-btn{
+    text-align: center;
+    cursor: pointer;
+    padding: 10px 0px;
+    border-radius: 5px;
+    box-shadow: 0 0 6px rgb(0 0 0 / 10%); 
+    width: 100%;
+    border: none;
+    background-color: var(--white);
+    margin: 8px 0px;
+}
+.calc-btn:focus{
+    background-color: var(--primarycolor);
+    color: var(--white); 
+}
+.result-btn{
+    background-color: var(--primarycolor);
+    color: var(--white);
+}
+/* ================== Calculator Styling End ================== */
+
+
+/* Media Quries */
+
+/* Medium devices (tablets, less than 992px) */
+@media (min-width: 991.98px) {
+   
+    /* Sidebar STyling Start */
+    body{
+        margin-left: var(--sidebarwidth);
+    } 
+    .offcanvas{
+        transform: none;
+        visibility: visible !important;
+    } 
+    /* .modal-backdrop.show{
+        opacity: 0 !important;
+    } */
+    /* Sidebar Styling End */
+    
+}
+
+/* Small devices (landscape phones, less than 768px) */
+@media (max-width: 767.98px) {
+    div.dataTables_wrapper div.dataTables_length, div.dataTables_wrapper div.dataTables_filter, div.dataTables_wrapper div.dataTables_info, div.dataTables_wrapper div.dataTables_paginate {
+        text-align: center;
+        margin: 20px 0px;
+    }
+}
+
+/* X-Small devices (portrait phones, less than 576px) */
+@media (max-width: 575.98px) {
+    .box-info{
+        border-radius: 10px;
+        /* background-color: var(--gray); */
+        padding: 10px 0px;
+    }
+}
+
